@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <!--implementation 'com.android.support:design:28.0.0' faz o TextViewInput funcionar-->
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextAppearance="@color/colorPrimaryDark">
+        <!--Número da OS-->
+        <EditText
+                android:id="@+id/n_os"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/n_os"
+                android:inputType="number"
+                android:textColorHint="@color/colorPrimaryDark"/>
+    </android.support.design.widget.TextInputLayout>
+    <!--Spinner Lista Serviço -->
+    <Spinner
+            android:id="@+id/lista_servico"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:entries="@array/lista_servico"
+            android:backgroundTint="@color/colorAccent"
+            />
+    <!--Produto-->
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextAppearance="@color/colorPrimaryDark">
+        <EditText
+                android:id="@+id/produto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prod"
+                android:textColorHint="@color/colorPrimaryDark"/>
+    </android.support.design.widget.TextInputLayout>
+    <!--Cliente-->
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintTextAppearance="@color/colorPrimaryDark">
+        <EditText
+                android:id="@+id/cliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/cliente"
+                android:textColorHint="@color/colorPrimaryDark"/>
+    </android.support.design.widget.TextInputLayout>
+</LinearLayout>
