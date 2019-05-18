@@ -8,6 +8,8 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
 import android.widget.Toast
 
 //Navigation Drawer Layout
@@ -16,11 +18,15 @@ class NavigationDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
      var toolbar : Toolbar ?= null
      lateinit var drwerlayout : DrawerLayout
      lateinit var nvgview : NavigationView
+     lateinit var btnadd: Button
 
     //OnCreate method
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navdrawer_activity_main)
+        //botão adicionar
+
+        //navigation view - variaveis e functions
         toolbar = findViewById(R.id.nvtoolbar)
         setSupportActionBar(toolbar)
         drwerlayout = findViewById(R.id.nvdrawerLayout)
@@ -62,5 +68,8 @@ class NavigationDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
         }
         drwerlayout.closeDrawer(GravityCompat.START)
         return true
+
     }
 }//fim navbar
+
+

@@ -10,8 +10,11 @@
                                         android:fitsSystemWindows="true"
                                         android:background="@color/white"
                                         tools:openDrawer="start"><!--faz a navigation view funcionar-->
+    <!--layout botão adicionar-->
+    <include layout="@layout/constrainlayout_cadastraros_botomadicionar"/>
     <!--layout da toolbar-->
     <include layout="@layout/navdrawer_layoutoolbar"/>
+
     <!--navigation view-->
     <!--layout da navigation view(itens)-->
     <android.support.design.widget.NavigationView

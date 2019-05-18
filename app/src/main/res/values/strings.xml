@@ -1,24 +1,28 @@
 <resources>
     <string name="app_name">AppOS</string>
     <!--Strings Drawer layout-->
-        <string name="abrir_drawer">Abrir</string>
-        <string name="fechar_drawer">Fechar</string>
+    <string name="abrir_drawer">Abrir</string>
+    <string name="fechar_drawer">Fechar</string>
     <!--Linear layout principal-->
-        <string name="cadastraOs_titulo">Olá! Seja Bem Vindo!</string>
-        <!--Spinner lista serviço-->
-        <string-array name="lista_servico">
+    <string name="cadastraOs_titulo">Olá! Seja Bem Vindo!</string>
+    <!--Spinner lista serviço-->
+    <string-array name="lista_servico">
         <item>Instalação</item>
         <item>Reparo</item>
         <item>Desinstalação</item>
-        </string-array>
+    </string-array>
     <!--Linear layout topo-->
-        <string name="n_os">Número da OS</string>
-        <string name="prod">Produto</string>
-        <string name="cliente">Cliente</string>
-        <string name="endereco">Endereço</string>
-        <string name="numero">Número</string>
-        <string name="bairro">Bairro</string>
-        <string name="cidade">Cidade</string>
-        <string name="estado">Estado</string>
-        <string name="cep">CEP</string>
+    <string name="n_os">Número da OS</string>
+    <string name="prod">Produto</string>
+    <string name="cliente">Cliente</string>
+    <string name="endereco">Endereço</string>
+    <string name="numero">Número</string>
+    <string name="bairro">Bairro</string>
+    <string name="cidade">Cidade</string>
+    <string name="estado">Estado</string>
+    <string name="cep">CEP</string>
+    <string name="pais">pais</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
