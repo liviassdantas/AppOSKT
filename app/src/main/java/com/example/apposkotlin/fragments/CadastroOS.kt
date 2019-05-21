@@ -57,8 +57,8 @@ class CadastroOS : Fragment() {
     private fun salvarDados() = OnClickListener {
         var os = OS() //instância da OS
         //set error - caso a OS esteja vazia
-        if (os.num_os.toString().isEmpty()) {
-            Error("Digite o número da OS")
+        if (os.num_os.toString().isBlank()) {
+            num_os.error=("Digite o número da OS")
         } else {
             os.num_os = num_os.text.toString().toInt()
         }
