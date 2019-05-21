@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:orientation="horizontal"
+>
+    <!--Layout bottom-->
+    <TableRow>
+        <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryDark">
+            <!--Estado-->
+            <EditText
+                    android:id="@+id/estado"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/estado"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryDark"
+            />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryDark">
+            <!--Número-->
+            <EditText
+                    android:id="@+id/numero_endereco"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/numero"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryDark"/>
+        </android.support.design.widget.TextInputLayout>
+        <!--cep-->
+        <android.support.design.widget.TextInputLayout
+                android:layout_width="97dp"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryDark">
+            <EditText
+                    android:id="@+id/cep"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/cep"
+                    android:textColorHint="@color/colorPrimaryDark"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryDark"/>
+        </android.support.design.widget.TextInputLayout>
+    </TableRow>
+</TableLayout>

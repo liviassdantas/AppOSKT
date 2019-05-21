@@ -8,46 +8,75 @@
     <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hintTextAppearance="@color/colorPrimaryDark">
+            android:textColorHint="@color/colorPrimaryDark"
+            >
         <!--Número da OS-->
         <EditText
+                android:backgroundTint="@color/colorPrimary"
                 android:id="@+id/n_os"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/n_os"
                 android:inputType="number"
-                android:textColorHint="@color/colorPrimaryDark"/>
+                android:textColor="@color/colorPrimaryDark"
+
+                />
     </android.support.design.widget.TextInputLayout>
     <!--Spinner Lista Serviço -->
     <Spinner
             android:id="@+id/lista_servico"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorPrimaryDark"
             android:entries="@array/lista_servico"
-            android:backgroundTint="@color/colorAccent"
-            />
-    <!--Produto-->
+            android:theme="@style/Theme.AppCompat.Light"
+    />
+
     <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hintTextAppearance="@color/colorPrimaryDark">
+            android:textColorHint="@color/colorPrimaryDark"
+            >
+        <!--Produto-->
         <EditText
                 android:id="@+id/produto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prod"
-                android:textColorHint="@color/colorPrimaryDark"/>
+               android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryDark"
+                />
     </android.support.design.widget.TextInputLayout>
-    <!--Cliente-->
+
     <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hintTextAppearance="@color/colorPrimaryDark">
+            android:textColorHint="@color/colorPrimaryDark"
+            >
+        <!--Cliente-->
         <EditText
+                android:backgroundTint="@color/colorPrimary"
                 android:id="@+id/cliente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/cliente"
-                android:textColorHint="@color/colorPrimaryDark"/>
+                android:textColor="@color/colorPrimaryDark"
+                />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorPrimaryDark"
+            >
+        <!--Endereco-->
+        <EditText
+                android:backgroundTint="@color/colorPrimary"
+                android:id="@+id/endereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/endereco"
+                android:textColor="@color/colorPrimaryDark"
+                />
     </android.support.design.widget.TextInputLayout>
 </LinearLayout>

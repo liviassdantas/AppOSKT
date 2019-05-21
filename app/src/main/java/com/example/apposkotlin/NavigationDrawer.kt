@@ -1,6 +1,7 @@
 package com.example.apposkotlin
 
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
@@ -11,6 +12,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import com.example.apposkotlin.fragments.CadastroOS
 
 //Navigation Drawer Layout
 class NavigationDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -18,13 +20,16 @@ class NavigationDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
      var toolbar : Toolbar ?= null
      lateinit var drwerlayout : DrawerLayout
      lateinit var nvgview : NavigationView
-     lateinit var btnadd: Button
+     lateinit var btnadd: FloatingActionButton
 
     //OnCreate method
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navdrawer_activity_main)
         //botão adicionar
+        btnadd = findViewById(R.id.btnadd)
+        btnadd.setOnClickListener (criarOS())
+
 
         //navigation view - variaveis e functions
         toolbar = findViewById(R.id.nvtoolbar)
@@ -42,6 +47,13 @@ class NavigationDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
         //clique do navigation
         nvgview.setNavigationItemSelectedListener(this)
     }//fim onCreate
+
+    private fun criarOS()= View.OnClickListener {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.ContainerFragment,CadastroOS(),"Cadastrar OS")
+            .commit()
+    }
+
     //botão voltar
     override fun onBackPressed() {
         if (drwerlayout.isDrawerOpen(GravityCompat.START)) {

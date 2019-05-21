@@ -1,32 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:id="@+id/lnarLayoutCdstrOS_PrincipalLayout"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:weightSum= "100">
+              android:layout_height="match_parent">
     <!--iniciando o layout-->
     <!--titulo-->
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:text="@string/cadastraOs_titulo"
-              android:textColor="@color/colorPrimaryDark"
-              android:textSize="30dp"
-              android:layout_marginTop="25dp"
-              android:layout_marginLeft="10dp"
-          />
     <!--Lzyout topo-->
     <include layout="@layout/linearlayout_cadastraros_topo"
-             android:layout_height="180dp"
+             android:layout_height="wrap_content"
              android:layout_width="match_parent"
              android:layout_gravity="top"/>
     <!--Layout Center-->
-    <include layout="@layout/linearlayout_cadastraros_center"
+    <include layout="@layout/tablelayout_cadastraros_center"
              android:layout_height="80dp"
              android:layout_width="match_parent"
              android:layout_gravity="center"/>
     <!--layout bottom-->
-    <include layout="@layout/linearlayout_cadastraros_bottom"
+    <include layout="@layout/tablelayout_cadastraros_bottom"
+             android:layout_height="80dp"
+             android:layout_width="match_parent"
+             android:layout_gravity="center"/>
+    <!--Botão salvar e localizar-->
+    <include layout="@layout/linearlayout_cadastraros_btnsalvarelocalizar"
              android:layout_height="80dp"
              android:layout_width="match_parent"
              android:layout_gravity="center"/>
