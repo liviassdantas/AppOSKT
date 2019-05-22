@@ -1,13 +1,20 @@
 package com.example.apposkotlin.fragments
 
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
+import android.location.Location
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.system.Os
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnClickListener
+import android.support.v4.content.ContextCompat.checkSelfPermission
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
@@ -15,6 +22,11 @@ import android.widget.Spinner
 import android.widget.Toast
 import com.example.apposkotlin.OS
 import com.example.apposkotlin.R
+import com.google.android.gms.location.Geofence
+import com.google.android.gms.location.LocationServices
+import kotlinx.android.synthetic.main.tablelayout_cadastraros_bottom.*
+import java.io.IOException
+import java.util.*
 
 //fragmento Cadastrar OS
 class CadastroOS : Fragment() {
@@ -51,14 +63,95 @@ class CadastroOS : Fragment() {
 
         //botão salvar
         btnSalvar.setOnClickListener(salvarDados())
+        btnLocalizar.setOnClickListener(localizarEndereco())
         return view
+
     }
+
+    //função localizar endereço
+    private fun localizarEndereco() = View.OnClickListener {
+        if (checkSelfPermission(context!!, Manifest.permission.ACCESS_COARSE_LOCATION) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            requestPermissions(
+                arrayOf(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ),
+                1010
+            )
+        } else {
+            getLocalizacao()
+        }
+
+    }
+    //requisitando a permissão para acessar a localização do usuário
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1010) {
+            if (grantResults[0] != PackageManager.PERMISSION_GRANTED)
+                getLocalizacao()
+        }
+
+    }
+    //iniciando a georeferência
+    @SuppressLint("MissingPermission")
+    fun getLocalizacao() {
+        val flpc = LocationServices
+            .getFusedLocationProviderClient(
+                this.context!!
+            )
+        flpc.lastLocation.addOnSuccessListener() {
+            try {
+                geoReferenciar(it)
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+    }
+    //função geoReferencia
+    @Throws(IOException::class)
+    fun geoReferenciar(location: Location) {
+        val geo = Geocoder(context, Locale.getDefault())
+        var enderecos: MutableList<Address> =
+            geo.getFromLocation(location.latitude, location.longitude, 1)
+        if (enderecos !=null && enderecos.size > 0) {
+            val address = enderecos.get(0)
+
+            //enviando informações
+            //numero
+            var num_casa = address.featureName
+            //formatando o número
+            if(num_casa.contains("-")) {
+                num_casa = num_casa.substring(0, num_casa.indexOf("-"))
+            }
+            //enviando para a txt view
+            numEndereco.setText(num_casa)
+            //endereco
+            var endereco_nome_rua = address.thoroughfare
+            endereco.setText(endereco_nome_rua)
+            //bairro
+            var bairro_endereco = address.subLocality
+            bairro.setText(bairro_endereco)
+            //cidade
+            var cidade_endereco = address.subAdminArea
+            cidade.setText(cidade_endereco)
+            //estado
+            var estado_endereco = address.adminArea
+            estado.setText(estado_endereco)
+            //cep
+            var cep_endereco = address.postalCode
+            cep.setText(cep_endereco)
+        }
+    }//fim botão lozalizar
+
+
     //botão Salvar
     private fun salvarDados() = OnClickListener {
         var os = OS() //instância da OS
         //set error - caso a OS esteja vazia
         if (os.num_os.toString().isBlank()) {
-            num_os.error=("Digite o número da OS")
+            num_os.error = ("Digite o número da OS")
         } else {
             os.num_os = num_os.text.toString().toInt()
         }
@@ -75,6 +168,8 @@ class CadastroOS : Fragment() {
         Toast.makeText(context, "OS salva", Toast.LENGTH_SHORT).show()
 
     }
+
+
 }
 
 
