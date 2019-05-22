@@ -3,6 +3,8 @@ package com.example.apposkotlin.fragments
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.arch.persistence.room.Room
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Address
@@ -10,6 +12,7 @@ import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import android.system.Os
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +24,9 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import com.example.apposkotlin.OS
+import com.example.apposkotlin.OSDaoRoom
 import com.example.apposkotlin.R
+import com.example.apposkotlin.osDatabase
 import com.google.android.gms.location.Geofence
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.tablelayout_cadastraros_bottom.*
@@ -30,6 +35,8 @@ import java.util.*
 
 //fragmento Cadastrar OS
 class CadastroOS : Fragment() {
+    //banco
+    var banco: osDatabase? = null
     //variáveis do layout
     private lateinit var num_os: EditText
     private lateinit var cliente: EditText
@@ -43,6 +50,7 @@ class CadastroOS : Fragment() {
     private lateinit var cep: EditText
     private lateinit var btnSalvar: Button
     private lateinit var btnLocalizar: Button
+
     //Inflar layout
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.linearlayout_cadastraros_principal, container, false)
@@ -149,6 +157,7 @@ class CadastroOS : Fragment() {
     //botão Salvar
     private fun salvarDados() = OnClickListener {
         var os = OS() //instância da OS
+
         //set error - caso a OS esteja vazia
         if (num_os.text.isBlank()) {
             num_os.error = "Digite o número da OS"
@@ -165,9 +174,10 @@ class CadastroOS : Fragment() {
         os.prod = prod.text.toString()
         os.cidade = cidade.text.toString()
         os.endereco = endereco.text.toString()
+        this.banco?.OSDao()?.Insert(os)
         Toast.makeText(context, "OS salva", Toast.LENGTH_SHORT).show()
-
     }
+
 
 
 }

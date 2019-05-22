@@ -1,16 +1,20 @@
 package com.example.apposkotlin
 
+import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
-import android.arch.persistence.room.Index
 import android.arch.persistence.room.PrimaryKey
+
 
 //classe OS
 //variáveis inicializadas
-//c
-@Entity
-class OS (
-    @PrimaryKey(autoGenerate = true)
-    var num_os: Int = 0,
+
+//nome da tabela
+@Entity(tableName = "OS")
+data class OS (
+    //chave primária(declarar antes da coluna)
+    @PrimaryKey var num_os: Int = 0,
+    //Coluna e os campos
+    @ColumnInfo(name = "os_banco")
     var lista_serv: String? = null,
     var prod: String? = null,
     var cliente: String? = null,

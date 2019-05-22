@@ -43,4 +43,6 @@ class OSCardviewAdapter(val context: Context, val ListaOS: MutableList<OS>) :
         val btnmapa: ImageButton = view.findViewById(R.id.adapter_cardView_botaoMapa)
 
     }
+
+
 }
