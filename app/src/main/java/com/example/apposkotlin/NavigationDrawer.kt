@@ -26,6 +26,7 @@ class NavigationDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navdrawer_activity_main)
+
         //botão adicionar
         btnadd = findViewById(R.id.btnadd)
         btnadd.setOnClickListener (criarOS())

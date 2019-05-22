@@ -23,10 +23,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
-import com.example.apposkotlin.OS
-import com.example.apposkotlin.OSDaoRoom
-import com.example.apposkotlin.R
-import com.example.apposkotlin.osDatabase
+import com.example.apposkotlin.*
 import com.google.android.gms.location.Geofence
 import com.google.android.gms.location.LocationServices
 import kotlinx.android.synthetic.main.tablelayout_cadastraros_bottom.*
@@ -50,6 +47,7 @@ class CadastroOS : Fragment() {
     private lateinit var cep: EditText
     private lateinit var btnSalvar: Button
     private lateinit var btnLocalizar: Button
+
 
     //Inflar layout
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

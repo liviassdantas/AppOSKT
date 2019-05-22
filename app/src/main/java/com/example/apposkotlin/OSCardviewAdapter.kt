@@ -9,20 +9,21 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 
-class OSCardviewAdapter(val context: Context, val ListaOS: MutableList<OS>) :
+
+class OSCardviewAdapter(val context: Context, val ListaOS: OSDaoRoom) :
     RecyclerView.Adapter<OSCardviewAdapter.Holder>() {
     override fun onBindViewHolder(p0: OSCardviewAdapter.Holder, p1: Int) {
         //criando a lista de OS que irá aparecer na tela
-        val itemOSLista = ListaOS[p1]
-        p0.num_os.text = itemOSLista.num_os.toString()
-        p0.servico.text = itemOSLista.lista_serv
-        p0.cliente.text= itemOSLista.cliente
-
-
+        val itemOSLista = ListaOS.getAll()
+        p0.num_os.text = itemOSLista[p1].num_os.toString()
+        p0.servico.text = itemOSLista[p1].lista_serv.toString()
+        p0.cliente.text= itemOSLista[p1].cliente.toString()
 
     }
     //getItemCount
-    override fun getItemCount(): Int = ListaOS.size
+    override fun getItemCount(): Int {
+        return ListaOS.getAll().count()
+    }
 
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): OSCardviewAdapter.Holder {

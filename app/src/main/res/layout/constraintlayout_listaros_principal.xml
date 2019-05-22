@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent"
+                                             xmlns:tools="http://schemas.android.com/tools">
+    <!--Layout para organizar os cards-->
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorAccent">
+        <!--lista dos cards-->
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/lista_cards"
+                tools:listitem="@layout/cardview_constraintlayout"
+                android:background="@color/colorAccent"
+                android:elevation="5dp">
+
+        </android.support.v7.widget.RecyclerView>
+        <include layout="@layout/constrainlayout_cadastraros_botomadicionar"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
