@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                                     xmlns:app="http://schemas.android.com/apk/res-auto"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
+                                    xmlns:tools="http://schemas.android.com/tools"
+                                    android:layout_width="match_parent" android:layout_height="wrap_content"
                                     android:layout_marginStart="5dp"
                                     android:layout_marginRight="5dp"
                                     android:layout_marginLeft="5dp"
@@ -12,9 +12,8 @@
                                     app:cardCornerRadius="10dp">
     <!--Cardview-->
     <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
             android:background="@color/white"
             android:orientation="vertical">
         <!--OS-->
@@ -34,14 +33,17 @@
                 android:layout_height="wrap_content"
                 android:gravity="end"
                 android:tint="@color/colorPrimaryDark"
-                android:textColor="@color/colorAccent"
-                android:text=" 1" />
+                android:textColor="@color/colorPrimaryDark"
+                tools:text=" 1"/>
         <!--Serviço-->
         <TextView
                 android:id="@+id/adapter_cardView_txvServico"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Instalação" />
+                android:text="instalação"
+                android:textColor="@color/colorPrimaryDark"
+                android:textColorHint="@color/colorPrimaryDark"
+        />
         <!--Cliente e endereço-->
         <LinearLayout
                 android:layout_width="match_parent"
@@ -52,7 +54,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:hint="Cliente "
+                    android:text="Cliente "
+                    android:textColor="@color/colorPrimaryDark"
                     android:layout_weight="3"
             />
             <!--Btn Câmera-->
@@ -79,4 +82,4 @@
         </LinearLayout>
     </LinearLayout>
 
-        </android.support.v7.widget.CardView>
+</android.support.v7.widget.CardView>

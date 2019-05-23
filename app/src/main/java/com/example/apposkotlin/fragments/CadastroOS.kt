@@ -31,7 +31,7 @@ import java.io.IOException
 import java.util.*
 
 //fragmento Cadastrar OS
-class CadastroOS : Fragment() {
+class CadastroOS (): Fragment() {
     //banco
     var banco: osDatabase? = null
     //variáveis do layout
@@ -47,10 +47,15 @@ class CadastroOS : Fragment() {
     private lateinit var cep: EditText
     private lateinit var btnSalvar: Button
     private lateinit var btnLocalizar: Button
-
+    private var edita:OS? = null
+    @SuppressLint("ValidFragment")
+    constructor(os:OS) : this(){
+        edita = os
+    }
 
     //Inflar layout
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         val view = inflater.inflate(R.layout.linearlayout_cadastraros_principal, container, false)
         //IDS
         //Componetes da tela
@@ -70,6 +75,9 @@ class CadastroOS : Fragment() {
         //botão salvar
         btnSalvar.setOnClickListener(salvarDados())
         btnLocalizar.setOnClickListener(localizarEndereco())
+
+
+        banco = osDatabase.getInstance(context!!)
         return view
 
     }
@@ -91,6 +99,7 @@ class CadastroOS : Fragment() {
         }
 
     }
+
     //requisitando a permissão para acessar a localização do usuário
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -100,6 +109,7 @@ class CadastroOS : Fragment() {
         }
 
     }
+
     //iniciando a georeferência
     @SuppressLint("MissingPermission")
     fun getLocalizacao() {
@@ -115,20 +125,21 @@ class CadastroOS : Fragment() {
             }
         }
     }
+
     //função geoReferencia
     @Throws(IOException::class)
     fun geoReferenciar(location: Location) {
         val geo = Geocoder(context, Locale.getDefault())
         var enderecos: MutableList<Address> =
             geo.getFromLocation(location.latitude, location.longitude, 1)
-        if (enderecos !=null && enderecos.size > 0) {
+        if (enderecos != null && enderecos.size > 0) {
             val address = enderecos.get(0)
 
             //enviando informações
             //numero
             var num_casa = address.featureName
             //formatando o número
-            if(num_casa.contains("-")) {
+            if (num_casa.contains("-")) {
                 num_casa = num_casa.substring(0, num_casa.indexOf("-"))
             }
             //enviando para a txt view
@@ -172,10 +183,20 @@ class CadastroOS : Fragment() {
         os.prod = prod.text.toString()
         os.cidade = cidade.text.toString()
         os.endereco = endereco.text.toString()
-        this.banco?.OSDao()?.Insert(os)
-        Toast.makeText(context, "OS salva", Toast.LENGTH_SHORT).show()
-    }
 
+        Thread(Runnable {
+            if (this.banco?.oSDao()?.Insert(os) != -1L) {
+                activity?.runOnUiThread {
+                    Toast.makeText(activity?.applicationContext, "OS salva", Toast.LENGTH_SHORT).show()
+                    fragmentManager?.beginTransaction()
+                        ?.replace(R.id.ContainerFragment, ListarOS(), "Listar OS")
+                        ?.commit()
+                }
+            }
+        }).start()
+
+
+    }
 
 
 }

@@ -13,6 +13,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import com.example.apposkotlin.fragments.CadastroOS
+import com.example.apposkotlin.fragments.ListarOS
 
 //Navigation Drawer Layout
 class NavigationDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -47,6 +48,11 @@ class NavigationDrawer : AppCompatActivity(), NavigationView.OnNavigationItemSel
 
         //clique do navigation
         nvgview.setNavigationItemSelectedListener(this)
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.ContainerFragment, ListarOS(), "Listar OS")
+            .commit()
+
     }//fim onCreate
 
     private fun criarOS()= View.OnClickListener {

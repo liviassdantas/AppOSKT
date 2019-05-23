@@ -4,25 +4,30 @@ import android.arch.persistence.room.*
 import android.system.Os
 
 @Dao
-class OSDaoRoom {
+interface OSDaoRoom {
     //CRUD
     //INSERT
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    fun Insert(vararg os: OS): Long {return Insert()}
+    fun Insert(os: OS): Long
+
     //UPDATE
     @Update
-    fun Update(vararg os: OS){}
+    fun Update(os: OS)
+
     //DELETE
     @Delete
-    fun Delete(os: OS){}
+    fun Delete(os: OS)
+
     //SELECIONANDO AS OS PELO ID
     @Query("SELECT * FROM OS WHERE num_os = :id")
-    fun getOSbyID(id:Long) {}
+    fun getOSbyID(id:Long):OS
+
     //SELECIONANDO TUDO
     @Query("SELECT * FROM OS")
-    fun getAll(): List<OS>{return getAll()}
+    fun getAll(): List<OS>
+
     //DELETANDO UMA OS
     @Query("DELETE FROM OS WHERE num_os = :id")
-    fun deleteOSByID(id:Long){}
+    fun deleteOSByID(id:Long)
 
 }
