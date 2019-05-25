@@ -52,7 +52,7 @@
             <!--OS-->
             <TextView
                     android:id="@+id/adapter_cardView_txvOS"
-                    android:layout_width="45dp"
+                    android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:gravity="bottom"
                     android:tint="@color/preto"

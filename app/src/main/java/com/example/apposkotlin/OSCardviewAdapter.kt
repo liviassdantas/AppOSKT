@@ -74,12 +74,12 @@ class OSCardviewAdapter(
                     val armz = frag.context!!.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
                     return File.createTempFile(nomeFoto, ".jpg", armz)
                 }
-                 /*fun ExibirImagem() {
+                 fun ExibirImagem() {
                     val btmop = BitmapFactory.Options()
                     btmop.inJustDecodeBounds = true
                     BitmapFactory.decodeFile(ArquivoFoto().absolutePath, btmop)
                     val bitmap = BitmapFactory.decodeFile(ArquivoFoto().absolutePath, btmop)
-                }*/
+                }
                 /*arvfoto = ArquivoFoto()
                 val uri = FileProvider.getUriForFile(
                     frag.context!!,

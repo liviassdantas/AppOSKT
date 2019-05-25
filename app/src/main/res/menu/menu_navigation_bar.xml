@@ -6,9 +6,10 @@
               android:title="Editar Tema"
 
         />
+
         <item android:id="@+id/item2"
-              android:icon="@android:drawable/ic_delete"
-              android:title="item 2"/>
+              android:icon="@android:drawable/ic_menu_camera"
+              android:title="Futura Galeria"/>
 
     </group>
 </menu>
