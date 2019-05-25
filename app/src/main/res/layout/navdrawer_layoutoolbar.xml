@@ -6,6 +6,6 @@
             android:id="@+id/nvtoolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
+            android:background="@color/orangeAccent"
             app:theme="@style/ThemeOverlay.AppCompat.ActionBar"/>
 </merge>

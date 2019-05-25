@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+    <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="horizontal">
+        <TableRow
+        android:background="@color/white">
+            <TextView
+                    android:id="@+id/txtviewAlertRosa"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="Rosa"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"/>
+            <Switch
+                    android:id="@+id/switchRosa"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:thumbTint="@color/colorPrimary"
+                    android:layout_marginStart="20dp"
+                    tools:targetApi="lollipop"/>
+        </TableRow>
+        <TableRow
+        android:background="@color/white">
+            <TextView
+                    android:id="@+id/txtviewAlertLaranja"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="Laranja"
+                    android:textColor="@color/orangePrimary"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"/>
+            <Switch
+                    android:id="@+id/switchOrange"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:thumbTint="@color/orangePrimary"
+                    android:layout_marginStart="20dp"
+                    tools:targetApi="lollipop"/>
+        </TableRow>
+    </TableLayout>
+
+
+</LinearLayout>

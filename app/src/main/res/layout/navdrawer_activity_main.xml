@@ -14,8 +14,9 @@
     <!--Layout para inserir o fragment-->
     <LinearLayout
                   android:orientation="vertical"
+                  android:background="@color/white"
                   android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
+                  android:layout_height="match_parent">
         <!--layout da toolbar-->
         <include layout="@layout/navdrawer_layoutoolbar"
                  android:layout_height="wrap_content"
@@ -24,8 +25,11 @@
         <FrameLayout
                 android:id="@+id/ContainerFragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toTopOf="parent">
         </FrameLayout>
+
+
     </LinearLayout>
 
     <!--navigation view-->
@@ -41,6 +45,5 @@
             app:itemTextColor="@color/preto"
             app:itemIconTint="@color/preto"/>
 
-    <!--layout botão adicionar-->
-    <include layout="@layout/constrainlayout_cadastraros_botomadicionar"/>
+
 </android.support.v4.widget.DrawerLayout>

@@ -23,6 +23,6 @@
     <string name="cep">CEP</string>
     <string name="pais">pais</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Alert dialog layout-->
+    <string name="tituloalert">Deslize para escolher</string>
 </resources>

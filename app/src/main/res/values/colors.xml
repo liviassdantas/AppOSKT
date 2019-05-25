@@ -3,6 +3,13 @@
     <color name="colorPrimary">#ee0290</color>
     <color name="colorPrimaryDark">#dd0074</color>
     <color name="colorAccent">#fbe2f0</color>
+    <color name="icontint">#E91E63</color>
     <color name="white">#ffff</color>
     <color name="preto">#000000</color>
+    <color name="orange_material">#fff2df</color>
+    <color name="orangePrimary">#ee6002</color>
+    <color name="orangeAccent">#ff8d00</color>
+    <color name="grey">#757575</color>
+
+
 </resources>

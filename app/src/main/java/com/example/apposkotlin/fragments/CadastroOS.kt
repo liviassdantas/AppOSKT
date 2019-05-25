@@ -31,7 +31,7 @@ import java.io.IOException
 import java.util.*
 
 //fragmento Cadastrar OS
-class CadastroOS (): Fragment() {
+class CadastroOS() : Fragment() {
     //banco
     var banco: osDatabase? = null
     //variáveis do layout
@@ -47,10 +47,11 @@ class CadastroOS (): Fragment() {
     private lateinit var cep: EditText
     private lateinit var btnSalvar: Button
     private lateinit var btnLocalizar: Button
-    private var edita:OS? = null
+    private var edita: OS? = null
+
     @SuppressLint("ValidFragment")
-    constructor(os:OS) : this(){
-        edita = os
+    constructor(os: OS) : this() {
+        this.edita = os
     }
 
     //Inflar layout
@@ -78,9 +79,13 @@ class CadastroOS (): Fragment() {
 
 
         banco = osDatabase.getInstance(context!!)
+        if (edita != null) {
+            recarregarDados()
+        }
         return view
 
     }
+
 
     //função localizar endereço
     private fun localizarEndereco() = View.OnClickListener {
@@ -184,18 +189,53 @@ class CadastroOS (): Fragment() {
         os.cidade = cidade.text.toString()
         os.endereco = endereco.text.toString()
 
-        Thread(Runnable {
-            if (this.banco?.oSDao()?.Insert(os) != -1L) {
+
+        if (edita != null) {
+            Thread(Runnable {
+                this.banco?.oSDao()?.Update(os)
                 activity?.runOnUiThread {
                     Toast.makeText(activity?.applicationContext, "OS salva", Toast.LENGTH_SHORT).show()
                     fragmentManager?.beginTransaction()
                         ?.replace(R.id.ContainerFragment, ListarOS(), "Listar OS")
                         ?.commit()
                 }
-            }
-        }).start()
 
+            }).start()
+        } else {
+            //Thread que cria a os no banco
+            Thread(Runnable {
+                if (this.banco?.oSDao()?.Insert(os) != -1L) {
+                    activity?.runOnUiThread {
+                        Toast.makeText(activity?.applicationContext, "OS salva", Toast.LENGTH_SHORT).show()
+                        fragmentManager?.beginTransaction()
+                            ?.replace(R.id.ContainerFragment, ListarOS(), "Listar OS")
+                            ?.commit()
+                    }
+                }
+            }).start()
+        }
 
+    }
+
+    private fun recarregarDados() {
+        num_os.isEnabled = false
+        num_os.setText(edita?.num_os.toString())
+        var position = when (edita?.lista_serv) {
+            "Instalação" -> 0
+            "Reparo" -> 1
+            "Desinstalação" -> 2
+            else -> -1
+        }
+
+        lista_servico.getItemAtPosition(position)
+        endereco.setText(edita?.endereco)
+        cliente.setText(edita?.cliente)
+        cidade.setText(edita?.cidade)
+        cep.setText(edita?.cep)
+        bairro.setText(edita?.bairro)
+        estado.setText(edita?.estado)
+        numEndereco.setText(edita?.numEndereco)
+        prod.setText(edita?.prod)
     }
 
 
